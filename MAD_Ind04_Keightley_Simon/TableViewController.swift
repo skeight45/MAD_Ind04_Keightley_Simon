@@ -5,12 +5,12 @@
 //  Created by Simon Keightley on 4/3/24.
 //
 
+import UIKit
+
 struct State {
     var name: String
     var nickname: String
 }
-
-import UIKit
 
 class StatesTableViewController: UITableViewController {
 
@@ -20,6 +20,31 @@ class StatesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "US States"
+        
+        let urlString = "https://cs.okstate.edu/skeight/ind04.php"
+        guard let url = URL(string: urlString) else {
+            print("Invalid URL")
+            return
+        }
+
+        let task = URLSession.shared.dataTask(with: url)
+        { (data, response, error) in
+            guard error == nil else {
+                print("URL Session error: \(error)")
+                return
+            }
+            guard let data = data else {
+                print("No data received")
+                return
+            }
+            
+            do {
+                let json = try JSONDecoder().decode(State.self, from: data)
+                print(json)
+            } catch let error as NSError {
+                print("Error serializing JSON Data: \(error)")
+            }
+        }
     }
 
     //MARK: - Table view data source
