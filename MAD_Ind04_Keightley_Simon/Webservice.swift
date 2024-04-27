@@ -16,9 +16,9 @@ class WebService {
     func getStates(url: URL) async throws -> [State] {
         let (data, response) = try await URLSession.shared.data(from: url)
         guard let httpResponse = response as? HTTPURLResponse,
-              httpResponse.statusCode == 200 else {
-            throw StatesError.invalidServerResponse
-        }
+            httpResponse.statusCode == 200 else {
+                throw StatesError.invalidServerResponse
+            }
         return try JSONDecoder().decode([State].self, from: data)
     }
 }

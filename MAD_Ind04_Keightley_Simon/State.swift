@@ -8,6 +8,36 @@
 import Foundation
 
 struct State: Decodable {
-    var name: String
-    var nickname: String
+    let name: String
+    let nickname: String
+}
+
+class StateViewModel {
+    private let state: State
+    
+    init(state: State) {
+        self.state = state
+    }
+    
+    var name: String {
+        state.name
+    }
+    
+    var nickname: String {
+        state.nickname
+    }
+}
+
+class StateListViewModel {
+    
+    private(set) var states: [StateViewModel] = []
+    
+    func populateStates(url: URL) async {
+        do {
+            let states = try await WebService().getStates(url: url)
+            self.states = states.map(StateViewModel.init)
+        } catch {
+            print(error)
+        }
+    }
 }
