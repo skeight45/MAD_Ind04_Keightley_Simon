@@ -16,6 +16,8 @@
 		4868BEE42BDB421B00241763 /* MAD_Ind04_Keightley_SimonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4868BEE32BDB421B00241763 /* MAD_Ind04_Keightley_SimonTests.swift */; };
 		4868BEEE2BDB421B00241763 /* MAD_Ind04_Keightley_SimonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4868BEED2BDB421B00241763 /* MAD_Ind04_Keightley_SimonUITests.swift */; };
 		4868BEF02BDB421B00241763 /* MAD_Ind04_Keightley_SimonUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4868BEEF2BDB421B00241763 /* MAD_Ind04_Keightley_SimonUITestsLaunchTests.swift */; };
+		4868BEFD2BDCA47900241763 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4868BEFC2BDCA47900241763 /* Webservice.swift */; };
+		4868BEFF2BDCA50800241763 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4868BEFE2BDCA50800241763 /* State.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		4868BEE92BDB421B00241763 /* MAD_Ind04_Keightley_SimonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MAD_Ind04_Keightley_SimonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4868BEED2BDB421B00241763 /* MAD_Ind04_Keightley_SimonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAD_Ind04_Keightley_SimonUITests.swift; sourceTree = "<group>"; };
 		4868BEEF2BDB421B00241763 /* MAD_Ind04_Keightley_SimonUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAD_Ind04_Keightley_SimonUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4868BEFC2BDCA47900241763 /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
+		4868BEFE2BDCA50800241763 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				4868BECC2BDB421900241763 /* AppDelegate.swift */,
 				4868BECE2BDB421900241763 /* SceneDelegate.swift */,
 				4868BED02BDB421900241763 /* TableViewController.swift */,
+				4868BEFE2BDCA50800241763 /* State.swift */,
+				4868BEFC2BDCA47900241763 /* Webservice.swift */,
 				4868BED22BDB421900241763 /* Main.storyboard */,
 				4868BED52BDB421B00241763 /* Assets.xcassets */,
 				4868BED72BDB421B00241763 /* LaunchScreen.storyboard */,
@@ -260,6 +266,8 @@
 			files = (
 				4868BED12BDB421900241763 /* TableViewController.swift in Sources */,
 				4868BECD2BDB421900241763 /* AppDelegate.swift in Sources */,
+				4868BEFD2BDCA47900241763 /* Webservice.swift in Sources */,
+				4868BEFF2BDCA50800241763 /* State.swift in Sources */,
 				4868BECF2BDB421900241763 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

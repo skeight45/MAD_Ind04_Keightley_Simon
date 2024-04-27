@@ -7,43 +7,40 @@
 
 import UIKit
 
-struct State {
-    var name: String
-    var nickname: String
+class StateViewModel {
+    private let state: State
+    
+    init(state: State) {
+        self.state = state
+    }
+    
+    var name: String {
+        state.name
+    }
+    
+    var nickname: String {
+        state.nickname
+    }
 }
 
 class StatesTableViewController: UITableViewController {
 
     //Array of State structs holding names and nicknames
-    let states: [State] = [State]()
+    private(set) var states: [StateViewModel] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "US States"
         
-        let urlString = "https://cs.okstate.edu/skeight/ind04.php"
-        guard let url = URL(string: urlString) else {
-            print("Invalid URL")
-            return
-        }
-
-        let task = URLSession.shared.dataTask(with: url)
-        { (data, response, error) in
-            guard error == nil else {
-                print("URL Session error: \(error)")
-                return
-            }
-            guard let data = data else {
-                print("No data received")
-                return
-            }
-            
-            do {
-                let json = try JSONDecoder().decode(State.self, from: data)
-                print(json)
-            } catch let error as NSError {
-                print("Error serializing JSON Data: \(error)")
-            }
+    }
+    
+    func populateStates(url: URL) async {
+        
+        do {
+            let states = try await WebService().getStates(url: url)
+            self.states = states.map(StateViewModel.init)
+        } catch {
+            print(error)
         }
     }
 
