@@ -9,7 +9,7 @@ import UIKit
 
 class StatesTableViewController: UITableViewController {
 
-    //@IBOutlet var spinner: UIActivityIndicatorView!
+    @IBOutlet var spinner: UIActivityIndicatorView!
     
     //Array of State structs holding names and nicknames
     let viewModel = StateListViewModel()
@@ -20,19 +20,26 @@ class StatesTableViewController: UITableViewController {
         super.viewDidLoad()
         title = "US States"
         
-        //spinner.hidesWhenStopped = true
-        //spinner.startAnimating()
+        //set the spinner to start animating and hide when it is stopped later
+        spinner.hidesWhenStopped = true
+        spinner.startAnimating()
         
+        //task to allow for async methods to be run in viewDidLoad, which is not async
         Task {
             await populateStates()
+            
+            //testing a delay to prove the spinner exists
+            try await Task.sleep(nanoseconds: 1_000_000_000)
+            
+            //stops the spinner
+            spinner.stopAnimating()
         }
-        
-        //spinner.stopAnimating()
     }
     
+    //sets up a chain to populate the states later down the line using my php url
     private func populateStates() async {
         let statesURL = URL(string: "https://cs.okstate.edu/~skeight/index.php")
-            await viewModel.populateStates(url: statesURL!)
+        await viewModel.populateStates(url: statesURL!)
         statesList = viewModel.states
     }
 
@@ -51,18 +58,18 @@ class StatesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StateCell", for: indexPath)
         let state = statesList[indexPath.row]
+        print(state.name)
         cell.textLabel?.text = state.name
         cell.detailTextLabel?.text = state.nickname
         return cell
     }
     
-    //Segues to a selected state when tapping on a cell
-    /*
+    //Segues to a selected state when tapping on a cell -- not needed ind04
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedState = states[indexPath.row]
-        performSegue(withIdentifier: "showStateDetail", sender: selectedState)
+        let selectedState = statesList[indexPath.row]
+        //performSegue(withIdentifier: "showStateDetail", sender: selectedState)
     }
-     */
+     
 
 }
 

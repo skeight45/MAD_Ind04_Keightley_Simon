@@ -7,11 +7,13 @@
 
 import Foundation
 
+//struct for the state  information
 struct State: Decodable {
     let name: String
     let nickname: String
 }
 
+//abstractions to allow for init function
 class StateViewModel {
     private let state: State
     
@@ -28,6 +30,7 @@ class StateViewModel {
     }
 }
 
+//a container for the stateviewmodel that calls the webservice
 class StateListViewModel {
     
     private(set) var states: [StateViewModel] = []
