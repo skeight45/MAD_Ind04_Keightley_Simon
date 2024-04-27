@@ -68,7 +68,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="wau-rh-0E8"/>
                     <connections>
-                        <outlet property="spinner" destination="fEw-HZ-ooB" id="Zbc-lh-gtG"/>
+                        <outlet property="spinner" destination="fEw-HZ-ooB" id="iRe-fJ-3AD"/>
+                        <outlet property="tableOfStates" destination="YQU-Ik-zK2" id="AA5-Xk-oQs"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ty6-5B-81P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

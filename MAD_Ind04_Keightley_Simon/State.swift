@@ -13,9 +13,25 @@ struct State: Decodable {
     let nickname: String
 }
 
+//a container for the stateviewmodel that calls the webservice
+class StateListViewModel {
+    
+    private(set) var states: [StateViewModel] = []
+    
+    func populateStates(url: URL) async {
+        print("enters ViewModel populateStates")
+        do {
+            let states = try await WebService().getStates(url: url)
+            self.states = states.map(StateViewModel.init)
+        } catch {
+            print(error)
+        }
+    }
+}
+
 //abstractions to allow for init function
-class StateViewModel {
-    private let state: State
+struct StateViewModel {
+    private var state: State
     
     init(state: State) {
         self.state = state
@@ -27,20 +43,5 @@ class StateViewModel {
     
     var nickname: String {
         state.nickname
-    }
-}
-
-//a container for the stateviewmodel that calls the webservice
-class StateListViewModel {
-    
-    private(set) var states: [StateViewModel] = []
-    
-    func populateStates(url: URL) async {
-        do {
-            let states = try await WebService().getStates(url: url)
-            self.states = states.map(StateViewModel.init)
-        } catch {
-            print(error)
-        }
     }
 }
